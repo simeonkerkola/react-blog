@@ -6,7 +6,7 @@ public/dist
 .env_development
 .env_test
 old_components
-src/styles/index.css
+src/styles/styles.css
 
 ### Node ###
 

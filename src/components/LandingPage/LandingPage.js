@@ -1,11 +1,12 @@
 import React, { Component } from 'react';
 import PostFeed from '../PostFeed/PostFeed';
+import PostFeedFilters from '../PostFeedFilters/PostFeedFilters';
 
 class LandingPage extends Component {
   render() {
     return (
       <div className="container">
-        Moi
+        <PostFeedFilters />
         <PostFeed />
       </div>
     );

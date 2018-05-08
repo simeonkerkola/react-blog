@@ -48,7 +48,7 @@ store.dispatch(
 );
 console.log(store.getState());
 
-store.dispatch(setTextFilter());
+store.dispatch(setTextFilter('second'));
 const state = store.getState();
 const visiblePosts = getVisiblePosts(state.posts, state.filters);
 console.log('visiblePosts', visiblePosts);

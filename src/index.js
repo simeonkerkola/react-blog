@@ -1,6 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import 'normalize-css';
+import { Provider } from 'react-redux';
 
 import configureStore from './store/configureStore';
 import { createPost } from './actions/posts';
@@ -47,12 +48,16 @@ store.dispatch(
 );
 console.log(store.getState());
 
-store.dispatch(setTextFilter('another'));
+store.dispatch(setTextFilter());
 const state = store.getState();
 const visiblePosts = getVisiblePosts(state.posts, state.filters);
 console.log('visiblePosts', visiblePosts);
 
-const jsx = <AppRouter />;
+const jsx = (
+  <Provider store={store}>
+    <AppRouter />
+  </Provider>
+);
 
 ReactDOM.render(jsx, document.getElementById('root'));
 registerServiceWorker();

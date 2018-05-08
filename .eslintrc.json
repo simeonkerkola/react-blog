@@ -28,6 +28,7 @@
         "specialLink": ["hrefLeft", "hrefRight"],
         "aspects": ["noHref", "invalidHref", "preferButton"]
       }
-    ]
+    ],
+    "no-unused-expressions": ["error", { "allowShortCircuit": true }]
   }
 }

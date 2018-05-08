@@ -5,7 +5,6 @@ import { Provider } from 'react-redux';
 
 import configureStore from './store/configureStore';
 import { createPost } from './actions/posts';
-import { setTextFilter } from './actions/filters';
 
 import getVisiblePosts from './selectors/posts';
 import AppRouter from './routers/AppRouter';
@@ -46,9 +45,7 @@ store.dispatch(
     totalLikes: 11,
   }),
 );
-console.log(store.getState());
 
-store.dispatch(setTextFilter('second'));
 const state = store.getState();
 const visiblePosts = getVisiblePosts(state.posts, state.filters);
 console.log('visiblePosts', visiblePosts);

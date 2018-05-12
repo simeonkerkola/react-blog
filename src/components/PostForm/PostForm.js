@@ -5,14 +5,18 @@ import { SingleDatePicker } from 'react-dates';
 import 'react-dates/lib/css/_datepicker.css';
 
 class PostForm extends Component {
-  state = {
-    title: '',
-    body: '',
-    tags: [],
-    createdAt: moment(),
-    calendarFocused: false,
-    error: '',
-  };
+  constructor(props) {
+    super(props);
+    this.state = {
+      title: props.post ? props.post.title : '',
+      body: props.post ? props.post.body : '',
+      tags: props.post ? props.post.tags : [],
+      createdAt: props.post ? moment(props.post.createdAt) : moment(),
+      calendarFocused: false,
+      error: '',
+    };
+  }
+
   onSubmit = (e) => {
     e.preventDefault();
 

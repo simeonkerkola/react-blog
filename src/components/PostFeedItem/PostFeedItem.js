@@ -1,17 +1,8 @@
 import React from 'react';
-import { connect } from 'react-redux';
-
-import { removePost } from '../../actions/posts';
+import { Link } from 'react-router-dom';
 
 const PostFeedItem = ({
-  dispatch,
-  id,
-  author,
-  title,
-  body,
-  createdAt,
-  totalLikes,
-  totalComments,
+  id, author, title, body, createdAt, totalLikes, totalComments,
 }) => (
   <div>
     <h2>{title}</h2>
@@ -21,14 +12,8 @@ const PostFeedItem = ({
     <div>
       <span>likes: {totalLikes}</span> <span>comments: {totalComments}</span>
     </div>
-    <button
-      onClick={() => {
-        dispatch(removePost({ id }));
-      }}
-    >
-      remove
-    </button>
+    <Link to={`/edit/${id}`}>Edit</Link>
   </div>
 );
 
-export default connect()(PostFeedItem);
+export default PostFeedItem;

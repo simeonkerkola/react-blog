@@ -2,7 +2,7 @@ import uuid from 'uuid';
 
 // createPost
 export const createPost = ({
-  author,
+  author = 'Anonymous',
   title = '',
   body = '',
   tags = [],

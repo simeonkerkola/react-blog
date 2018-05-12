@@ -24,7 +24,6 @@ const PostFeedItem = ({
     <button
       onClick={() => {
         dispatch(removePost({ id }));
-        console.log('click');
       }}
     >
       remove

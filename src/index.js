@@ -6,7 +6,6 @@ import { Provider } from 'react-redux';
 import configureStore from './store/configureStore';
 import { createPost } from './actions/posts';
 
-import getVisiblePosts from './selectors/posts';
 import AppRouter from './routers/AppRouter';
 import registerServiceWorker from './registerServiceWorker';
 
@@ -45,10 +44,6 @@ store.dispatch(
     totalLikes: 11,
   }),
 );
-
-const state = store.getState();
-const visiblePosts = getVisiblePosts(state.posts, state.filters);
-console.log('visiblePosts', visiblePosts);
 
 const jsx = (
   <Provider store={store}>

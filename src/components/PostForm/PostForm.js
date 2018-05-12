@@ -4,9 +4,6 @@ import 'react-dates/initialize';
 import { SingleDatePicker } from 'react-dates';
 import 'react-dates/lib/css/_datepicker.css';
 
-const now = moment();
-console.log(now.format('MMM Do YYYY'));
-
 class PostForm extends Component {
   state = {
     title: '',
@@ -23,11 +20,12 @@ class PostForm extends Component {
       this.setState(() => ({ error: 'Please provide title and some text.' }));
     } else {
       this.setState(() => ({ error: '' }));
+      const cleanTags = this.state.tags.map(each => each.trim()).filter(Boolean);
       this.props.onSubmit({
-        title: this.state.title,
-        body: this.state.body,
+        title: this.state.title.trim(),
+        body: this.state.body.trim(),
         createdAt: this.state.createdAt.valueOf(),
-        tags: this.state.tags.map(each => each.trim()).filter(Boolean),
+        tags: [...new Set(cleanTags)], // Remove duplicates
       });
     }
   };
@@ -44,8 +42,8 @@ class PostForm extends Component {
   onTagChange = (e) => {
     let tags = e.target.value.replace(/^[\s]*/gm, ''); // Don't allow to start with space
 
-    // REGEX THIS!
-    // tags.trim() because throws and error when starting with spacebar,
+    // tags.trim() because throws and error when starting with spacebar
+    // Regex this somehow?
     if (tags.trim()) {
       tags = tags
         .match(/([^`|'|""|\s]+\s{0,1})+/gm)
@@ -54,9 +52,8 @@ class PostForm extends Component {
     }
 
     this.setState(() => ({ tags }));
-
-    console.log('tags', tags);
-    console.log('state', this.state.tags);
+    // console.log('tags', tags);
+    // console.log('state', this.state.tags);
   };
 
   onDateChange = (createdAt) => {

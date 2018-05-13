@@ -1,13 +1,15 @@
-// Get visible posts
+import moment from 'moment';
 
+// Get visible posts
 export default (posts, {
   text, author, sortBy, startDate, endDate,
 }) =>
   posts
     .filter((post) => {
-      // Always true if startDate is NOT a number (undefined), or created later than startDate
-      const startDateMatch = typeof startDate !== 'number' || post.createdAt >= startDate;
-      const endDateMatch = typeof endDate !== 'number' || post.createdAt <= endDate;
+      const createdAtMoment = moment(post.createdAt);
+      // Always true if there is NO startDate (undefined), or created later than startDate
+      const startDateMatch = startDate ? startDate.isSameOrBefore(createdAtMoment, 'day') : true;
+      const endDateMatch = endDate ? endDate.isSameOrAfter(createdAtMoment, 'day') : true;
       const authorMatch = post.author.toLowerCase().includes(author.toLowerCase());
       const textMatch =
         post.title.toLowerCase().includes(text.toLowerCase()) ||

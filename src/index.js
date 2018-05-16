@@ -19,8 +19,8 @@ store.dispatch(
     title: 'My First Post',
     body: 'This is the post.',
     createdAt: 1526413301148,
-    totalComments: 20,
-    totalLikes: 1,
+    comments: 20,
+    likes: 1,
   }),
 );
 store.dispatch(
@@ -29,8 +29,8 @@ store.dispatch(
     title: 'My Second Post',
     body: 'And this is another post',
     createdAt: 1526403301148,
-    totalComments: 2,
-    totalLikes: 100,
+    comments: 2,
+    likes: 100,
   }),
 );
 
@@ -40,8 +40,8 @@ store.dispatch(
     title: 'My third Post',
     body: 'Post is this',
     createdAt: 1526313301148,
-    totalComments: 30,
-    totalLikes: 11,
+    comments: 30,
+    likes: 11,
   }),
 );
 

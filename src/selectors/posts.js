@@ -20,7 +20,7 @@ export default (posts, {
     })
     .sort((a, b) => {
       if (sortBy === 'date') return a.createdAt < b.createdAt ? 1 : -1;
-      else if (sortBy === 'comments') return b.totalComments - a.totalComments;
-      else if (sortBy === 'likes') return b.totalLikes - a.totalLikes;
+      else if (sortBy === 'comments') return b.comments - a.comments;
+      else if (sortBy === 'likes') return b.likes - a.likes;
       return 0;
     });

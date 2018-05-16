@@ -7,8 +7,8 @@ export const createPost = ({
   body = '',
   tags = [],
   createdAt = 0,
-  totalComments = 0,
-  totalLikes = 0,
+  comments = 0,
+  likes = 0,
 } = {}) => ({
   type: 'CREATE_POST',
   post: {
@@ -18,8 +18,8 @@ export const createPost = ({
     body,
     tags,
     createdAt,
-    totalComments,
-    totalLikes,
+    comments,
+    likes,
   },
 });
 

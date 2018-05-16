@@ -7,7 +7,7 @@ import PostsSummary from '../PostsSummary/PostsSummary';
 
 const PostFeed = ({ posts }) => (
   <div>
-    <PostsSummary posts={posts} />
+    <PostsSummary />
     {posts.map(post => <PostFeedItem key={post.id} {...post} />)}
   </div>
 );

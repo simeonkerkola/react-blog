@@ -4,18 +4,23 @@ import { connect } from 'react-redux';
 import getVisiblePosts from '../../selectors/posts';
 import { totalComments, totalLikes } from '../../selectors/totals';
 
-const PostsSummary = ({ posts }) => (
+const PostsSummary = ({ postsCount, totalLikes, totalComments }) => (
   <div>
-    {console.log(posts)}
     <p>
-      Viewing: {posts.length} {posts.length === 1 ? 'posts' : 'post'}
+      Viewing: {postsCount} {postsCount === 1 ? 'post' : 'posts'}
     </p>
-    total comments: {totalComments(posts)}, likes: {totalLikes(posts)}
+    total comments: {totalComments}, likes: {totalLikes}
   </div>
 );
 
-const mapStateToProps = state => ({
-  posts: getVisiblePosts(state.posts, state.filters),
-});
+const mapStateToProps = (state) => {
+  const visiblePosts = getVisiblePosts(state.posts, state.filters);
+
+  return {
+    postsCount: visiblePosts.length,
+    totalLikes: totalLikes(visiblePosts),
+    totalComments: totalComments(visiblePosts),
+  };
+};
 
 export default connect(mapStateToProps)(PostsSummary);

@@ -7,6 +7,7 @@
   },
   "dependencies": {
     "ajv": "6.5.0",
+    "dotenv-cli": "^1.4.0",
     "express": "^4.16.3",
     "firebase": "^5.0.2",
     "moment": "2.22.1",
@@ -27,7 +28,7 @@
   "scripts": {
     "build-css": "node-sass-chokidar src/ -o src/",
     "watch-css": "npm run build-css && node-sass-chokidar src/ -o src/ --watch --recursive",
-    "start-js": "react-scripts start",
+    "start-js": "dotenv react-scripts start",
     "start-dev": "npm-run-all -p watch-css start-js",
     "build-js": "react-scripts build",
     "build": "npm-run-all build-css build-js",

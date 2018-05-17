@@ -1,12 +1,13 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+
 import 'normalize-css';
 import { Provider } from 'react-redux';
-import './firebase/firebase';
 
 import configureStore from './store/configureStore';
 import { createPost } from './actions/posts';
 
+import './firebase/firebase';
 import AppRouter from './routers/AppRouter';
 import registerServiceWorker from './registerServiceWorker';
 
@@ -16,6 +17,7 @@ const store = configureStore();
 
 store.dispatch(
   createPost({
+    id: 1,
     author: 'Me',
     title: 'My First Post',
     body: 'This is the post.',
@@ -26,6 +28,7 @@ store.dispatch(
 );
 store.dispatch(
   createPost({
+    id: 2,
     author: 'you',
     title: 'My Second Post',
     body: 'And this is another post',
@@ -37,6 +40,7 @@ store.dispatch(
 
 store.dispatch(
   createPost({
+    id: 3,
     author: 'you',
     title: 'My third Post',
     body: 'Post is this',

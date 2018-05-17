@@ -5,7 +5,7 @@ import { startCreatePost } from '../../actions/posts';
 
 class CreatePostPage extends Component {
   onSubmit = (post) => {
-    this.props.onSubmit(post);
+    this.props.startCreatePost(post);
     this.props.history.push('/');
   };
   render() {
@@ -21,8 +21,8 @@ class CreatePostPage extends Component {
   }
 }
 
-const mapDispatchToProps = (dispatch, props) => ({
-  onSubmit: post => dispatch(startCreatePost(post)),
+const mapDispatchToProps = dispatch => ({
+  startCreatePost: post => dispatch(startCreatePost(post)),
 });
 
 export default connect(undefined, mapDispatchToProps)(CreatePostPage);

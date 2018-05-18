@@ -45,6 +45,7 @@ export const removePost = ({ id }) => ({
   id,
 });
 
+// startRemovePosts
 export const startRemovePosts = ({ id }) => (dispatch) => {
   database
     .ref(`posts/${id}`)
@@ -68,14 +69,22 @@ export const setPosts = posts => ({
   posts,
 });
 
+// startSetPosts
 export const startSetPosts = () => dispatch =>
   database
     .ref('posts')
     .once('value')
     .then((snapshot) => {
       const posts = [];
+      const tags = [];
       snapshot.forEach((childSnapshot) => {
-        posts.push({ id: childSnapshot.key, ...childSnapshot.val() });
+        // Create an id; if tags, create an array of them; spread the rest of the values
+        posts.push({
+          id: childSnapshot.key,
+          tags: childSnapshot.val().tags ? Object.values(childSnapshot.val().tags) : [],
+          ...childSnapshot.val(),
+        });
       });
+      console.log('posts', posts);
       dispatch(setPosts(posts));
     });

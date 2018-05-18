@@ -10,6 +10,8 @@ export default (state = postsReducerDefaultState, action) => {
         if (post.id === action.id) return { ...post, ...action.updates };
         return post;
       });
+    case 'SET_POSTS':
+      return action.posts;
     default:
       return state;
   }

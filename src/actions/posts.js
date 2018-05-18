@@ -30,7 +30,6 @@ export const startCreatePost = (postData = {}) => (dispatch) => {
     .ref('posts')
     .push(post)
     .then((ref) => {
-      console.log('ref', ref);
       dispatch(
         createPost({
           id: ref.key,
@@ -52,3 +51,21 @@ export const editPost = (id, updates) => ({
   id,
   updates,
 });
+
+// setPosts
+export const setPosts = posts => ({
+  type: 'SET_POSTS',
+  posts,
+});
+
+export const startSetPosts = () => dispatch =>
+  database
+    .ref('posts')
+    .once('value')
+    .then((snapshot) => {
+      const posts = [];
+      snapshot.forEach((childSnapshot) => {
+        posts.push({ id: childSnapshot.key, ...childSnapshot.val() });
+      });
+      dispatch(setPosts(posts));
+    });

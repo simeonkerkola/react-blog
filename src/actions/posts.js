@@ -63,6 +63,17 @@ export const editPost = (id, updates) => ({
   updates,
 });
 
+// startEditPosts
+export const startEditPost = (id, updates) => (dispatch) => {
+  database
+    .ref(`posts/${id}`)
+    .update({ ...updates })
+    .then(() => {
+      dispatch(editPost(id, updates));
+    })
+    .catch(err => console.log('update failed', err.message));
+};
+
 // setPosts
 export const setPosts = posts => ({
   type: 'SET_POSTS',
@@ -76,7 +87,6 @@ export const startSetPosts = () => dispatch =>
     .once('value')
     .then((snapshot) => {
       const posts = [];
-      const tags = [];
       snapshot.forEach((childSnapshot) => {
         // Create an id; if tags, create an array of them; spread the rest of the values
         posts.push({
@@ -85,6 +95,5 @@ export const startSetPosts = () => dispatch =>
           ...childSnapshot.val(),
         });
       });
-      console.log('posts', posts);
       dispatch(setPosts(posts));
     });

@@ -3,7 +3,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 
 import PostForm from '../PostForm/PostForm';
-import { editPost, startRemovePosts } from '../../actions/posts';
+import { startEditPost, startRemovePosts } from '../../actions/posts';
 
 class EditPostPage extends Component {
   onSubmit = (post) => {
@@ -31,7 +31,7 @@ const mapStateToProps = (state, props) => ({
 });
 
 const mapDispatchToProps = dispatch => ({
-  editPost: (id, updates) => dispatch(editPost(id, updates)),
+  editPost: (id, updates) => dispatch(startEditPost(id, updates)),
   removePost: data => dispatch(startRemovePosts(data)),
 });
 

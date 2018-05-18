@@ -45,6 +45,16 @@ export const removePost = ({ id }) => ({
   id,
 });
 
+export const startRemovePosts = ({ id }) => (dispatch) => {
+  database
+    .ref(`posts/${id}`)
+    .remove()
+    .then(() => {
+      dispatch(removePost({ id }));
+    })
+    .catch(err => console.log('Failed to remove:', err.message));
+};
+
 // editPost
 export const editPost = (id, updates) => ({
   type: 'EDIT_POST',

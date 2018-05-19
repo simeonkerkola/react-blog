@@ -9,7 +9,7 @@ import { startSetPosts } from './actions/posts';
 import { login, logout } from './actions/auth';
 
 import { firebase } from './firebase/firebase';
-import AppRouter from './routers/AppRouter';
+import AppRouter, { history } from './routers/AppRouter';
 import registerServiceWorker from './registerServiceWorker';
 
 import './styles/styles.css';
@@ -36,6 +36,7 @@ firebase.auth().onAuthStateChanged((user) => {
   } else {
     store.dispatch(logout());
     console.log('logged out');
+    history.push('/');
   }
 });
 

@@ -1,5 +1,6 @@
 import React from 'react';
-import { BrowserRouter, Route, Switch } from 'react-router-dom';
+import { Router, Route, Switch } from 'react-router-dom';
+import createHistory from 'history/createBrowserHistory';
 
 import LandingPage from '../components/LandingPage/LandingPage';
 import CreatePostPage from '../components/CreatePostPage/CreatePostPage';
@@ -8,8 +9,11 @@ import Header from '../components/Header/Header';
 import HelpPage from '../components/HelpPage/HelpPage';
 import NotFoundPage from '../components/NotFoundPage/NotFoundPage';
 
+// We have use separate history so component like the Header can redirect users
+export const history = createHistory();
+
 const AppRouter = () => (
-  <BrowserRouter>
+  <Router history={history}>
     <div>
       <Header />
       <Switch>
@@ -20,7 +24,7 @@ const AppRouter = () => (
         <Route component={NotFoundPage} />
       </Switch>
     </div>
-  </BrowserRouter>
+  </Router>
 );
 
 export default AppRouter;

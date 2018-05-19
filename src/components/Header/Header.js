@@ -2,11 +2,15 @@ import React, { Component } from 'react';
 import { NavLink } from 'react-router-dom';
 import { connect } from 'react-redux';
 
-import { startLogin } from '../../actions/auth';
+import { startLogin, startLogout } from '../../actions/auth';
 
 class Header extends Component {
   handleAuthentication = () => {
-    this.props.startLogin();
+    if (this.props.userState) {
+      this.props.startLogout();
+    } else {
+      this.props.startLogin();
+    }
   };
   render() {
     return (
@@ -22,15 +26,22 @@ class Header extends Component {
           <NavLink to="/help" activeClassName="is-active">
             Help
           </NavLink>
-          <button onClick={this.handleAuthentication}>Login</button>
+          <button onClick={this.handleAuthentication}>
+            {this.props.userState ? 'Logout' : 'Login'}
+          </button>
         </nav>
       </header>
     );
   }
 }
 
-const mapDispatchToProps = dispatch => ({
-  startLogin: () => dispatch(startLogin()),
+const mapStateToProps = state => ({
+  userState: state.auth,
 });
 
-export default connect(undefined, mapDispatchToProps)(Header);
+const mapDispatchToProps = dispatch => ({
+  startLogin: () => dispatch(startLogin()),
+  startLogout: () => dispatch(startLogout()),
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(Header);

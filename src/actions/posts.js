@@ -63,7 +63,7 @@ export const editPost = (id, updates) => ({
   updates,
 });
 
-// startEditPosts
+// startEditPost
 export const startEditPost = (id, updates) => (dispatch) => {
   database
     .ref(`posts/${id}`)

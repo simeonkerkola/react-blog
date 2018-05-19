@@ -10,6 +10,8 @@ Blog Engine and Platform Build with React
 * [x] Create, edit and delete posts
 * [x] Connect to Firebase db
 * [x] Filter posts by keywords and arrange the order in multiple ways
+* [x] Firebase User authentication
 * [ ] Possibility to comment and like posts
-* [ ] Firebase User authentication
+* [ ] Only the author can edit their posts
 * [ ] Filter posts by users
+* [ ] Save posts as drafts

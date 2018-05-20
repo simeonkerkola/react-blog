@@ -1,5 +1,6 @@
 import React from 'react';
+import Layout from '../Layout/Layout';
 
-const HelpPage = () => <div>HelpPage</div>;
+const HelpPage = () => <Layout>HelpPage</Layout>;
 
 export default HelpPage;

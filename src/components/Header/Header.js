@@ -6,7 +6,6 @@ import { startLogin, startLogout } from '../../actions/auth';
 
 const Header = props => (
   <header>
-    {console.log(props)}
     <h1>Blog</h1>
     <nav>
       <NavLink to="/" activeClassName="is-active" exact>

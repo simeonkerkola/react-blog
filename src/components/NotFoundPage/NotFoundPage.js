@@ -1,11 +1,12 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import Layout from '../Layout/Layout';
 
 const NotFoundPage = () => (
-  <div>
+  <Layout>
     404!
     <Link to="/">Go home</Link>
-  </div>
+  </Layout>
 );
 
 export default NotFoundPage;

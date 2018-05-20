@@ -3,6 +3,8 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 
 import PostForm from '../PostForm/PostForm';
+import Layout from '../Layout/Layout';
+
 import { startEditPost, startRemovePost } from '../../actions/posts';
 
 class EditPostPage extends Component {
@@ -16,11 +18,11 @@ class EditPostPage extends Component {
   };
   render() {
     return (
-      <div>
+      <Layout>
         <h2>Edit Post</h2>
         <PostForm post={this.props.post} onSubmit={this.onSubmit} />
         <button onClick={this.onRemove}>remove</button>
-      </div>
+      </Layout>
     );
   }
 }

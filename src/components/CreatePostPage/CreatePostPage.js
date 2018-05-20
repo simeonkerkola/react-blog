@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import PostForm from '../PostForm/PostForm';
 import { startCreatePost } from '../../actions/posts';
+import Layout from '../Layout/Layout';
 
 class CreatePostPage extends Component {
   onSubmit = (post) => {
@@ -11,11 +12,13 @@ class CreatePostPage extends Component {
   render() {
     return (
       <div>
-        CreatePostPage
-        <PostForm
-          // This prop is called in PostForm onSubmit function
-          onSubmit={this.onSubmit}
-        />
+        <Layout>
+          CreatePostPage
+          <PostForm
+            // This prop is called in PostForm onSubmit function
+            onSubmit={this.onSubmit}
+          />
+        </Layout>
       </div>
     );
   }

@@ -11,6 +11,8 @@ Blog Engine and Platform Build with React
 * [x] Connect to Firebase db
 * [x] Filter posts by keywords and arrange the order in multiple ways
 * [x] Firebase User authentication
+* [ ] Each post has it's own page
+* [ ] Each author has their own page
 * [ ] Possibility to comment and like posts
 * [ ] Only the author can edit their posts
 * [ ] Filter posts by users

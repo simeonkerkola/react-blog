@@ -12,7 +12,10 @@ const PrivateRoute = ({
     {/* Route is not getting isAuthenticated or component passed to it */}
     <Route
       {...rest}
-      component={props => (isAuthenticated ? <Component {...props} /> : <Redirect to="/" />)}
+      component={props =>
+        // Comment something
+         (isAuthenticated ? <Component {...props} /> : <Redirect to="/" />)
+      }
     />
   </div>
 );

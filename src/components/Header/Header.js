@@ -15,15 +15,22 @@ class Header extends Component {
   render() {
     return (
       <header>
-        {console.log(this.props.isAuthenticated)}
+        {/* {console.log(this.props.isAuthenticated)} */}
         <h1>Blog</h1>
         <nav>
           <NavLink to="/" activeClassName="is-active" exact>
             Home
           </NavLink>
-          <NavLink to="/create" activeClassName="is-active">
-            Create new
-          </NavLink>
+          {this.props.isAuthenticated && (
+            <NavLink to="/create" activeClassName="is-active">
+              Create new
+            </NavLink>
+          )}
+          {this.props.isAuthenticated && (
+            <NavLink to={`/user/${this.props.userId}`} activeClassName="is-active">
+              My page
+            </NavLink>
+          )}
           <NavLink to="/help" activeClassName="is-active">
             Help
           </NavLink>
@@ -38,6 +45,7 @@ class Header extends Component {
 
 const mapStateToProps = state => ({
   isAuthenticated: !!state.auth,
+  userId: state.auth && state.auth.uidd,
 });
 
 const mapDispatchToProps = dispatch => ({

@@ -8,6 +8,7 @@ import EditPostPage from '../components/EditPostPage/EditPostPage';
 import Header from '../components/Header/Header';
 import HelpPage from '../components/HelpPage/HelpPage';
 import NotFoundPage from '../components/NotFoundPage/NotFoundPage';
+import UserPage from '../components/UserPage/UserPage';
 
 import PrivateRoute from './PrivateRoute';
 
@@ -22,6 +23,7 @@ const AppRouter = () => (
         <Route path="/" component={LandingPage} exact />
         <PrivateRoute path="/create" component={CreatePostPage} />
         <PrivateRoute path="/edit/:id" component={EditPostPage} />
+        <Route path="/user/:id" component={UserPage} />
         <Route path="/help" component={HelpPage} />
         <Route component={NotFoundPage} />
       </Switch>

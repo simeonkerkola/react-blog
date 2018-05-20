@@ -9,7 +9,9 @@ import Header from '../components/Header/Header';
 import HelpPage from '../components/HelpPage/HelpPage';
 import NotFoundPage from '../components/NotFoundPage/NotFoundPage';
 
-// We have use separate history so component like the Header can redirect users
+import PrivateRoute from './PrivateRoute';
+
+// We have use separate history so components outside the Routes, like the Header can redirect users
 export const history = createHistory();
 
 const AppRouter = () => (
@@ -18,8 +20,8 @@ const AppRouter = () => (
       <Header />
       <Switch>
         <Route path="/" component={LandingPage} exact />
-        <Route path="/create" component={CreatePostPage} />
-        <Route path="/edit/:id" component={EditPostPage} />
+        <PrivateRoute path="/create" component={CreatePostPage} />
+        <PrivateRoute path="/edit/:id" component={EditPostPage} />
         <Route path="/help" component={HelpPage} />
         <Route component={NotFoundPage} />
       </Switch>

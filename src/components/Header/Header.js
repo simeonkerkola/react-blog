@@ -6,7 +6,7 @@ import { startLogin, startLogout } from '../../actions/auth';
 
 class Header extends Component {
   handleAuthentication = () => {
-    if (this.props.userState) {
+    if (this.props.isAuthenticated) {
       this.props.startLogout();
     } else {
       this.props.startLogin();
@@ -15,6 +15,7 @@ class Header extends Component {
   render() {
     return (
       <header>
+        {console.log(this.props.isAuthenticated)}
         <h1>Blog</h1>
         <nav>
           <NavLink to="/" activeClassName="is-active" exact>
@@ -27,7 +28,7 @@ class Header extends Component {
             Help
           </NavLink>
           <button onClick={this.handleAuthentication}>
-            {this.props.userState ? 'Logout' : 'Login'}
+            {this.props.isAuthenticated ? 'Logout' : 'Login'}
           </button>
         </nav>
       </header>
@@ -36,7 +37,7 @@ class Header extends Component {
 }
 
 const mapStateToProps = state => ({
-  userState: state.auth,
+  isAuthenticated: !!state.auth,
 });
 
 const mapDispatchToProps = dispatch => ({

@@ -1,4 +1,3 @@
-import uuid from 'uuid';
 import database from '../firebase/firebase';
 
 // createPost
@@ -7,7 +6,8 @@ export const createPost = post => ({
   post,
 });
 
-export const startCreatePost = (postData = {}) => (dispatch) => {
+export const startCreatePost = (postData = {}) => (dispatch, getState) => {
+  const { uid } = getState().auth;
   const {
     author = 'Anonymous',
     title = '',
@@ -25,9 +25,10 @@ export const startCreatePost = (postData = {}) => (dispatch) => {
     createdAt,
     comments,
     likes,
+    uid,
   };
   database
-    .ref('posts')
+    .ref('/posts/')
     .push(post)
     .then((ref) => {
       dispatch(
@@ -46,7 +47,8 @@ export const removePost = ({ id }) => ({
 });
 
 // startRemovePosts
-export const startRemovePost = ({ id }) => (dispatch) => {
+export const startRemovePost = ({ id }) => (dispatch, getState) => {
+  const { uid } = getState().auth;
   database
     .ref(`posts/${id}`)
     .remove()
@@ -64,7 +66,8 @@ export const editPost = (id, updates) => ({
 });
 
 // startEditPost
-export const startEditPost = (id, updates) => (dispatch) => {
+export const startEditPost = (id, updates) => (dispatch, getState) => {
+  const { uid } = getState().auth;
   database
     .ref(`posts/${id}`)
     .update({ ...updates })
@@ -81,15 +84,17 @@ export const setPosts = posts => ({
 });
 
 // startSetPosts
-export const startSetPosts = () => dispatch =>
+export const startSetPosts = () => (dispatch, getState) =>
   database
     .ref('posts')
+    //  .limitToLast(10)
     .once('value')
     .then((snapshot) => {
       const posts = [];
       snapshot.forEach((childSnapshot) => {
+        // .unshift; add to the beginning of an array
         // Create an id; if tags, create an array of them values; spread the rest of the values
-        posts.push({
+        posts.unshift({
           id: childSnapshot.key,
           tags: childSnapshot.val().tags ? Object.values(childSnapshot.val().tags) : [],
           ...childSnapshot.val(),

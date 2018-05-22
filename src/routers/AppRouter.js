@@ -5,7 +5,6 @@ import createHistory from 'history/createBrowserHistory';
 import LandingPage from '../components/LandingPage/LandingPage';
 import CreatePostPage from '../components/CreatePostPage/CreatePostPage';
 import EditPostPage from '../components/EditPostPage/EditPostPage';
-import Header from '../components/Header/Header';
 import HelpPage from '../components/HelpPage/HelpPage';
 import NotFoundPage from '../components/NotFoundPage/NotFoundPage';
 import UserPage from '../components/UserPage/UserPage';

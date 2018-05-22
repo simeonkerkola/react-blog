@@ -24,6 +24,7 @@ class PostListFilters extends Component {
       <div>
         <input
           type="text"
+          placeholder="Search"
           defaultValue={this.props.filters.text}
           onChange={(e) => {
             this.props.dispatch(setTextFilter(e.target.value));

@@ -12,7 +12,8 @@ Blog Engine and Platform Build with React
 * [x] Filter posts by keywords and arrange the order in multiple ways
 * [x] Firebase User authentication
 * [ ] Each post has it's own page
-* [ ] Each author has their own page
+* [x] Each author has their own page
+* [ ] Authors may pick a nickname
 * [ ] Possibility to comment and like posts
 * [ ] Only the author can edit their posts
 * [ ] Filter posts by users

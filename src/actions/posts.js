@@ -34,7 +34,6 @@ export const startCreatePost = (postData = {}) => (dispatch, getState) => {
     likes,
     uid,
   };
-  console.log(post);
   database
     .ref(`users/${uid}/posts`)
     .push(post)

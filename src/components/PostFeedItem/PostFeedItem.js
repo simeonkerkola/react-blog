@@ -1,9 +1,10 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import moment from 'moment';
+import { connect } from 'react-redux';
 
 const PostFeedItem = ({
-  id, author, title, body, createdAt, likes, comments, tags,
+  id, author, title, body, createdAt, likes, comments, tags, uid, auth,
 }) => {
   const renderTags = () => tags.map(tag => <span key={tag}>{tag} </span>);
   return (
@@ -16,9 +17,13 @@ const PostFeedItem = ({
         <span>likes: {likes}</span> <span>comments: {comments}</span>
       </div>
       {tags.length > 0 && <div>tags: {renderTags()} </div>}
-      <Link to={`/edit/${id}`}>Edit</Link>
+      {uid === auth.uid && <Link to={`/edit/${id}`}>Edit</Link>}
     </div>
   );
 };
 
-export default PostFeedItem;
+const mapStateToProps = state => ({
+  auth: state.auth,
+});
+
+export default connect(mapStateToProps)(PostFeedItem);

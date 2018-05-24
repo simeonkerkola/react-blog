@@ -24,12 +24,14 @@ class PostForm extends Component {
       this.setState(() => ({ error: 'Please provide title and some text.' }));
     } else {
       this.setState(() => ({ error: '' }));
-      const cleanTags = this.state.tags.map(each => each.trim()).filter(Boolean);
+      if (this.state.tags) {
+        this.setState(() => ({ tags: this.state.tags.map(each => each.trim()).filter(Boolean) }));
+      }
       this.props.onSubmit({
         title: this.state.title.trim(),
         body: this.state.body.trim(),
         createdAt: this.state.createdAt.valueOf(),
-        tags: [...new Set(cleanTags)], // Remove duplicates
+        tags: [...new Set(this.state.tags)], // Remove duplicates
       });
     }
   };

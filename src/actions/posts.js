@@ -1,5 +1,12 @@
 import database from '../firebase/firebase';
 
+// helpers
+const pushToPostsList = (id, post) => {
+  database.ref(`posts/${id}`).update(post);
+};
+const usersRef = (userId, postId) => database.ref(`users/${userId}/posts/${postId}`);
+const postsRef = postId => database.ref(`posts/${postId}`);
+
 // createPost
 export const createPost = post => ({
   type: 'CREATE_POST',
@@ -27,17 +34,20 @@ export const startCreatePost = (postData = {}) => (dispatch, getState) => {
     likes,
     uid,
   };
+  console.log(post);
   database
-    .ref('/posts/')
+    .ref(`users/${uid}/posts`)
     .push(post)
     .then((ref) => {
+      postsRef(ref.key).update(post);
       dispatch(
         createPost({
           id: ref.key,
           ...post,
         }),
       );
-    });
+    })
+    .catch(err => console.log('error', err.message));
 };
 
 // removePost
@@ -49,9 +59,9 @@ export const removePost = ({ id }) => ({
 // startRemovePosts
 export const startRemovePost = ({ id }) => (dispatch, getState) => {
   const { uid } = getState().auth;
-  database
-    .ref(`posts/${id}`)
-    .remove()
+
+  // Remove from users data and post list
+  Promise.all([usersRef(uid, id).remove(), postsRef(id).remove()])
     .then(() => {
       dispatch(removePost({ id }));
     })
@@ -68,9 +78,7 @@ export const editPost = (id, updates) => ({
 // startEditPost
 export const startEditPost = (id, updates) => (dispatch, getState) => {
   const { uid } = getState().auth;
-  database
-    .ref(`posts/${id}`)
-    .update({ ...updates })
+  Promise.all([usersRef(uid, id).update(updates), postsRef(id).update(updates)])
     .then(() => {
       dispatch(editPost(id, updates));
     })

@@ -17,7 +17,7 @@ const PostFeedItem = ({
         <span>likes: {likes}</span> <span>comments: {comments}</span>
       </div>
       {tags.length > 0 && <div>tags: {renderTags()} </div>}
-      {uid === auth.uid && <Link to={`/edit/${id}`}>Edit</Link>}
+      {auth && uid === auth.uid && <Link to={`/edit/${id}`}>Edit</Link>}
     </div>
   );
 };

@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import PostForm from '../PostForm/PostForm';
-import { startCreatePost } from '../../actions/posts';
-import Layout from '../Layout/Layout';
+import { startCreatePost } from '../../../actions/posts';
+import Layout from '../../Layout/Layout';
 
 class CreatePostPage extends Component {
   onSubmit = (post) => {

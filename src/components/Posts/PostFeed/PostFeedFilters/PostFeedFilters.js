@@ -8,7 +8,7 @@ import {
   sortByComments,
   setStartDate,
   setEndDate,
-} from '../../actions/filters';
+} from '../../../../actions/filters';
 
 class PostListFilters extends Component {
   state = {

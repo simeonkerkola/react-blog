@@ -17,7 +17,7 @@ const Header = props => (
         </NavLink>
       )}
       {props.isAuthenticated && (
-        <NavLink to={`/user/${props.userId}`} activeClassName="is-active">
+        <NavLink to="/mypage" activeClassName="is-active">
           My page
         </NavLink>
       )}

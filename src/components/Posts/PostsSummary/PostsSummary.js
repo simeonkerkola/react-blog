@@ -1,8 +1,8 @@
 import React from 'react';
 import { connect } from 'react-redux';
 
-import getVisiblePosts from '../../selectors/posts';
-import { totalComments, totalLikes } from '../../selectors/totals';
+import getVisiblePosts from '../../../selectors/posts';
+import { totalComments, totalLikes } from '../../../selectors/totals';
 
 const PostsSummary = ({ postsCount, totalLikes, totalComments }) => (
   <div>

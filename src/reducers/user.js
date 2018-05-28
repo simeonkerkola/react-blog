@@ -1,9 +1,13 @@
-const postsReducerDefaultState = [];
+const postsReducerDefaultState = {
+  myPosts: [],
+  usersPosts: [],
+};
 export default (state = postsReducerDefaultState, action) => {
   switch (action.type) {
-    case 'SET_USERS_POSTS':
-      return action.posts;
-
+    case 'SET_MY_POSTS':
+      return { ...state, myPosts: action.posts };
+    case 'GET_USERS_POSTS':
+      return { ...state, usersPosts: action.posts };
     default:
       return state;
   }

@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
-import PostFeed from '../PostFeed/PostFeed';
-import PostFeedFilters from '../PostFeedFilters/PostFeedFilters';
+import PostFeed from '../Posts/PostFeed/PostFeed';
+import PostFeedFilters from '../Posts/PostFeed/PostFeedFilters/PostFeedFilters';
 import Layout from '../Layout/Layout';
 
 class LandingPage extends Component {

@@ -39,6 +39,7 @@ export const startCreatePost = (postData = {}) => (dispatch, getState) => {
     .push(post)
     .then((ref) => {
       postsRef(ref.key).update(post);
+      console.log(post);
       dispatch(
         createPost({
           id: ref.key,

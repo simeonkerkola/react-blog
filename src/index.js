@@ -7,7 +7,7 @@ import { Provider } from 'react-redux';
 import configureStore from './store/configureStore';
 import { startSetPosts } from './actions/posts';
 import { login, logout } from './actions/auth';
-import { startSetUsersPosts } from './actions/user';
+import { startSetMyPosts } from './actions/user';
 
 import { firebase } from './firebase/firebase';
 import AppRouter, { history } from './routers/AppRouter';
@@ -33,7 +33,7 @@ store.dispatch(startSetPosts()).then(() => {
 firebase.auth().onAuthStateChanged((user) => {
   if (user) {
     store.dispatch(login(user));
-    store.dispatch(startSetUsersPosts());
+    store.dispatch(startSetMyPosts());
     console.log('logged in');
   } else {
     store.dispatch(logout());

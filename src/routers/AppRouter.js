@@ -9,6 +9,7 @@ import HelpPage from '../components/HelpPage/HelpPage';
 import NotFoundPage from '../components/NotFoundPage/NotFoundPage';
 import UserPage from '../components/UserPage/UserPage';
 import MyPage from '../components/MyPage/MyPage';
+import PostPage from '../components/Posts/PostPage/PostPage';
 
 import PrivateRoute from './PrivateRoute';
 
@@ -23,7 +24,8 @@ const AppRouter = () => (
         <PrivateRoute path="/create" component={CreatePostPage} />
         <PrivateRoute path="/edit/:id" component={EditPostPage} />
         <PrivateRoute path="/mypage" component={MyPage} />
-        <Route path="/user/:id" component={UserPage} />
+        <Route path="/user/:uid" component={UserPage} exact />
+        <Route path="/user/:uid/:id" component={PostPage} />
         <Route path="/help" component={HelpPage} />
         <Route component={NotFoundPage} />
       </Switch>

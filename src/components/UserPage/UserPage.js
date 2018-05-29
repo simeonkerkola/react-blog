@@ -8,7 +8,8 @@ import { startGetUsersPosts } from '../../actions/user';
 class UserPage extends Component {
   constructor(props) {
     super(props);
-    props.startGetUsersPosts(this.props.match.params.id);
+    console.log(this.props.match.params);
+    props.startGetUsersPosts(this.props.match.params.uid);
   }
   render() {
     return (
@@ -34,7 +35,7 @@ const mapStateToProps = state => ({
 });
 
 const mapDispatchToProps = dispatch => ({
-  startGetUsersPosts: id => dispatch(startGetUsersPosts(id)),
+  startGetUsersPosts: uid => dispatch(startGetUsersPosts(uid)),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(UserPage);

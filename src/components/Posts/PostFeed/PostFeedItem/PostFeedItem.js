@@ -9,7 +9,9 @@ const PostFeedItem = ({
   const renderTags = () => tags.map(tag => <span key={tag}>{tag} </span>);
   return (
     <div>
-      <h2>{title}</h2>
+      <h2>
+        <Link to={`user/${uid}/${id}`}>{title}</Link>
+      </h2>
       <h3>
         <Link to={`user/${uid}`}>{author}</Link>
       </h3>

@@ -8,8 +8,8 @@ class UserPage extends Component {
   render() {
     return (
       <Layout>
+        <h2>My page</h2>
         {this.props.posts.map(post => <PostFeedItem key={post.id} {...post} />)}
-        UserPage
       </Layout>
     );
   }

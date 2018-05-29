@@ -16,5 +16,5 @@ Blog Engine and Platform Build with React
 * [ ] Authors may pick a nickname
 * [ ] Possibility to comment and like posts
 * [x] Only the author can edit their posts
-* [ ] Filter posts by users
+* [x] Filter posts by users
 * [ ] Save posts as drafts

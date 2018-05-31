@@ -14,18 +14,12 @@ export const createPost = post => ({
 });
 
 export const startCreatePost = (postData = {}) => (dispatch, getState) => {
-  const { uid } = getState().auth;
+  const { uid, displayName } = getState().auth;
   const {
-    author = 'Anonymous',
-    title = '',
-    body = '',
-    tags = [],
-    createdAt = 0,
-    comments = 0,
-    likes = 0,
+    title = '', body = '', tags = [], createdAt = 0, comments = 0, likes = 0,
   } = postData;
   const post = {
-    author,
+    author: displayName,
     title,
     body,
     tags,

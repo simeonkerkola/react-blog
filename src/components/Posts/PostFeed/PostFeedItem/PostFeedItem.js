@@ -10,10 +10,10 @@ const PostFeedItem = ({
   return (
     <div>
       <h2>
-        <Link to={`user/${uid}/${id}`}>{title}</Link>
+        <Link to={`/user/${uid}/${id}`}>{title}</Link>
       </h2>
       <h3>
-        <Link to={`user/${uid}`}>{author}</Link>
+        <Link to={`/user/${uid}`}>{author}</Link>
       </h3>
       <h4>{moment(createdAt).format('ddd MMM Do YYYY @ HH:mm ')}</h4>
       <p>{body}</p>

@@ -1,9 +1,6 @@
 import database from '../firebase/firebase';
 
 // helpers
-const pushToPostsList = (id, post) => {
-  database.ref(`posts/${id}`).update(post);
-};
 const usersRef = (userId, postId) => database.ref(`users/${userId}/posts/${postId}`);
 const postsRef = postId => database.ref(`posts/${postId}`);
 
@@ -33,7 +30,6 @@ export const startCreatePost = (postData = {}) => (dispatch, getState) => {
     .push(post)
     .then((ref) => {
       postsRef(ref.key).update(post);
-      console.log(post);
       dispatch(
         createPost({
           id: ref.key,

@@ -1,5 +1,5 @@
 import React from 'react';
-import { NavLink } from 'react-router-dom';
+import { NavLink, withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
 
 import { startLogin, startLogout } from '../../actions/auth';
@@ -17,7 +17,7 @@ const Header = props => (
         </NavLink>
       )}
       {props.isAuthenticated && (
-        <NavLink to="/mypage" activeClassName="is-active">
+        <NavLink to="/mypage/" activeClassName="is-active">
           My page
         </NavLink>
       )}
@@ -43,4 +43,4 @@ const mapDispatchToProps = dispatch => ({
   startLogout: () => dispatch(startLogout()),
 });
 
-export default connect(mapStateToProps, mapDispatchToProps)(Header);
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(Header));

@@ -1,13 +1,13 @@
 const postsReducerDefaultState = {
-  myPosts: [],
   usersPosts: [],
+  displayName: 'Anonymous',
 };
 export default (state = postsReducerDefaultState, action) => {
   switch (action.type) {
-    case 'SET_MY_POSTS':
-      return { ...state, myPosts: action.posts };
     case 'GET_USERS_POSTS':
       return { ...state, usersPosts: action.posts };
+    case 'SET_DISPLAY_NAME':
+      return { ...state, displayName: action.displayName };
     default:
       return state;
   }

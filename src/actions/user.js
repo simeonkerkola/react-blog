@@ -1,35 +1,5 @@
 import database from '../firebase/firebase';
 
-// setMyPosts
-export const setMyPosts = posts => ({
-  type: 'SET_MY_POSTS',
-  posts,
-});
-
-// startSetMyPosts
-export const startSetMyPosts = () => (dispatch, getState) => {
-  const { uid } = getState().auth;
-  return (
-    database
-      .ref(`users/${uid}/posts`)
-      // .orderByChild('uid')
-      // .equalTo(uid)
-      .on('value', (snapshot) => {
-        const posts = [];
-        snapshot.forEach((childSnapshot) => {
-          // .unshift; add to the beginning of an array
-          // Create an id; if tags, create an array of them values; spread the rest of the values
-          posts.unshift({
-            id: childSnapshot.key,
-            tags: childSnapshot.val().tags ? Object.values(childSnapshot.val().tags) : [],
-            ...childSnapshot.val(),
-          });
-        });
-        dispatch(setMyPosts(posts));
-      })
-  );
-};
-
 // getUsersPosts
 export const getUsersPosts = posts => ({
   type: 'GET_USERS_POSTS',
@@ -56,3 +26,16 @@ export const startGetUsersPosts = uid => dispatch =>
       });
       dispatch(getUsersPosts(posts));
     });
+
+// setDisplayName
+export const setDisplayName = displayName => ({
+  type: 'SET_DISPLAY_NAME',
+  displayName,
+});
+
+// // startSetDisplayName
+// export const startSetDisplayname = (uid, displayName) => dispatch =>
+//   database
+//     .ref(`users/${uid}/displayName`)
+//     .set(displayName)
+//     .then(dispatch(setDisplayName(displayName)));

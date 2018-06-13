@@ -13,7 +13,7 @@ Blog Engine and Platform Build with React
 * [x] Firebase User authentication
 * [x] Each post has it's own page
 * [x] Each author has their own page
-* [ ] Authors may pick a nickname
+* [ ] Author may pick a nickname
 * [ ] Possibility to comment and like posts
 * [x] Only the author can edit their posts
 * [x] Filter posts by users

@@ -13,7 +13,6 @@ class UserPage extends Component {
     };
   }
   componentDidMount() {
-    console.log(this.props);
     this.props.startGetUsersPosts(this.props.uid).then(() => {
       this.setState({
         loading: false,

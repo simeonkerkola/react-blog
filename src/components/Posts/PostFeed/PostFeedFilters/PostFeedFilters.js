@@ -46,9 +46,11 @@ class PostListFilters extends Component {
           <option value="comments">Comments</option>
         </select>
         <DateRangePicker
-          startDate={this.props.filters.startDate}
+          // startDate={this.props.filters.startDat}
+          startDate={null}
           startDateId="Start date"
-          endDate={this.props.filters.endDate}
+          // endDate={this.props.filters.endDate}
+          endDate={null}
           endDateId="End date"
           onDatesChange={this.onDatesChange}
           focusedInput={this.state.focusedInput}

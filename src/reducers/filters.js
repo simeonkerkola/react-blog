@@ -4,8 +4,10 @@ const filtersReducerDefaultState = {
   text: '',
   author: '',
   sortBy: 'date',
-  startDate: moment().startOf('month'),
-  endDate: moment().endOf('month'),
+  // startDate: moment().startOf('month'),
+  // endDate: moment().endOf('month'),
+  startDate: null,
+  endDate: null,
 };
 export default (state = filtersReducerDefaultState, action) => {
   switch (action.type) {
